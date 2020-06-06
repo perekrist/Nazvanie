@@ -9,34 +9,57 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 class MapObserver: ObservableObject {
     
     private let baseURL = "https://einavza.herokuapp.com/4/str"
     
-    @Published var models: [MapModel] = [MapModel(error: "", adress: "", lat: 56.501041, lng: 84.992455), MapModel(error: "", adress: "", lat: 58.501041, lng: 89.992455)]
+    @Published var models: [MapModel] = []
     
     
     func put(data: String) {
+        self.models.removeAll()
         
         let url = baseURL
+        print(data)
         AF.request(url, method: .put, parameters: ["data": data]).responseJSON { (data) in
+            
             print(data)
             
-            let json = try! JSON(data: data.data!)
-            let error = json["error"].stringValue
+            let json = try? JSON(data: data.data!)
             
-            if error == "" {
-                let results = json["answer"].arrayValue
+            if json != nil {
+                let error = json!["error"].stringValue
                 
-                for i in results {
-                    print(i.stringValue)
+                if error == "" {
+                    let results = json!["answer"].arrayValue
+                    
+                    for i in results {
+                        print(i.stringValue)
+                        self.addLocation(address: i.stringValue)
+                    }
+                    
+                } else {
+                    print(error)
                 }
-                
-            } else {
-                print(error)
             }
             
+        }
+    }
+    
+    func addLocation(address: String) {
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    print("no location")
+                    return
+            }
+            self.models.append(MapModel(adress: address, lat: location.coordinate.latitude, lng: location.coordinate.longitude))
         }
     }
 }

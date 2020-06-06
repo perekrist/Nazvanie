@@ -9,7 +9,6 @@
 import Foundation
 
 struct MapModel {
-    var error: String
     var adress: String
     var lat: Double
     var lng: Double
