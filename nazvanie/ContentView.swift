@@ -11,7 +11,10 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var query = ""
-    @ObservedObject private var CSVobserver = CSV()
+    
+    @ObservedObject private var CSVobserver = CSVObserver()
+    @ObservedObject private var mapObserver = MapObserver()
+    
     @State private var row = ""
     
     var body: some View {
@@ -23,8 +26,18 @@ struct ContentView: View {
                 VStack {
                     HStack {
                         Image(systemName: "magnifyingglass")
+                            .padding()
                         TextField("Search...", text: self.$query)
+                        
+                        Button(action: {
+                            self.mapObserver.put(data: self.query)
+                        }) {
+                            Text("Send")
+                        }
+                        .padding()
+                        .foregroundColor(.blue)
                     }
+                    
                     
                     
                     Text("-- OR --")
@@ -37,8 +50,10 @@ struct ContentView: View {
                     .padding()
                     .foregroundColor(.blue)
                     
-                    Text(row)
-                        .padding()
+                    if row != "" {
+                        Text(row)
+                            .padding()
+                    }
                 }
                 .padding()
                 .foregroundColor(.gray)

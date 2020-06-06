@@ -16,7 +16,9 @@
 		CAED2ACA248B553D00024C9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAED2AC8248B553D00024C9B /* LaunchScreen.storyboard */; };
 		CAED2AD2248B5AEA00024C9B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED2AD1248B5AEA00024C9B /* MapView.swift */; };
 		CAED2AD5248B63E800024C9B /* new_bad.csv in Resources */ = {isa = PBXBuildFile; fileRef = CAED2AD3248B63E600024C9B /* new_bad.csv */; };
-		CAED2AD9248B648500024C9B /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED2AD8248B648500024C9B /* CSV.swift */; };
+		CAED2AD9248B648500024C9B /* CSVObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED2AD8248B648500024C9B /* CSVObserver.swift */; };
+		CAED2ADB248B719700024C9B /* MapObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED2ADA248B719700024C9B /* MapObserver.swift */; };
+		CAED2ADD248B761300024C9B /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED2ADC248B761300024C9B /* MapModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +33,9 @@
 		CAED2ACB248B553D00024C9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAED2AD1248B5AEA00024C9B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		CAED2AD3248B63E600024C9B /* new_bad.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = new_bad.csv; sourceTree = "<group>"; };
-		CAED2AD8248B648500024C9B /* CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		CAED2AD8248B648500024C9B /* CSVObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVObserver.swift; sourceTree = "<group>"; };
+		CAED2ADA248B719700024C9B /* MapObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObserver.swift; sourceTree = "<group>"; };
+		CAED2ADC248B761300024C9B /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		EDB590F351582627EDE7171C /* Pods-nazvanie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nazvanie.debug.xcconfig"; path = "Target Support Files/Pods-nazvanie/Pods-nazvanie.debug.xcconfig"; sourceTree = "<group>"; };
 		F64E05B0445367DE0F88A484 /* Pods_nazvanie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nazvanie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,8 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				CAED2AC1248B553800024C9B /* ContentView.swift */,
+				CAED2AD8248B648500024C9B /* CSVObserver.swift */,
+				CAED2ADA248B719700024C9B /* MapObserver.swift */,
 				CAED2AD1248B5AEA00024C9B /* MapView.swift */,
-				CAED2AD8248B648500024C9B /* CSV.swift */,
 				CAED2AD7248B63ED00024C9B /* DataSets */,
 				CAED2AC3248B553D00024C9B /* Assets.xcassets */,
 				CAED2ABF248B553800024C9B /* SceneDelegate.swift */,
@@ -88,6 +93,7 @@
 				CAED2AC8248B553D00024C9B /* LaunchScreen.storyboard */,
 				CAED2ACB248B553D00024C9B /* Info.plist */,
 				CAED2AC5248B553D00024C9B /* Preview Content */,
+				CAED2ADC248B761300024C9B /* MapModel.swift */,
 			);
 			path = nazvanie;
 			sourceTree = "<group>";
@@ -232,9 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAED2ADB248B719700024C9B /* MapObserver.swift in Sources */,
 				CAED2ABE248B553800024C9B /* AppDelegate.swift in Sources */,
 				CAED2AD2248B5AEA00024C9B /* MapView.swift in Sources */,
-				CAED2AD9248B648500024C9B /* CSV.swift in Sources */,
+				CAED2AD9248B648500024C9B /* CSVObserver.swift in Sources */,
+				CAED2ADD248B761300024C9B /* MapModel.swift in Sources */,
 				CAED2AC0248B553800024C9B /* SceneDelegate.swift in Sources */,
 				CAED2AC2248B553800024C9B /* ContentView.swift in Sources */,
 			);
