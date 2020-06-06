@@ -83,10 +83,10 @@
 			isa = PBXGroup;
 			children = (
 				CAED2AC1248B553800024C9B /* ContentView.swift */,
-				CAED2AD8248B648500024C9B /* CSVObserver.swift */,
 				CAED2ADA248B719700024C9B /* MapObserver.swift */,
 				CAED2AD1248B5AEA00024C9B /* MapView.swift */,
 				CAED2ADC248B761300024C9B /* MapModel.swift */,
+				CAED2AD8248B648500024C9B /* CSVObserver.swift */,
 				CAED2AD7248B63ED00024C9B /* DataSets */,
 				CAED2AC3248B553D00024C9B /* Assets.xcassets */,
 				CAED2ABF248B553800024C9B /* SceneDelegate.swift */,

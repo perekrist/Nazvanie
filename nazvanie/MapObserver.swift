@@ -20,32 +20,32 @@ class MapObserver: ObservableObject {
     
     func put(data: String) {
         self.models.removeAll()
+        self.addLocation(address: "Томск Сибирская 111Б")
         
         let url = baseURL
-        print(data)
-        AF.request(url, method: .put, parameters: ["data": data]).responseJSON { (data) in
-            
-            print(data)
-            
-            let json = try? JSON(data: data.data!)
-            
-            if json != nil {
-                let error = json!["error"].stringValue
-                
-                if error == "" {
-                    let results = json!["answer"].arrayValue
-                    
-                    for i in results {
-                        print(i.stringValue)
-                        self.addLocation(address: i.stringValue)
-                    }
-                    
-                } else {
-                    print(error)
-                }
-            }
-            
-        }
+//        AF.request(url, method: .put, parameters: ["data": data]).responseJSON { (data) in
+//
+//            print(data)
+//
+//            let json = try? JSON(data: data.data!)
+//
+//            if json != nil {
+//                let error = json!["error"].stringValue
+//
+//                if error == "" {
+//                    let results = json!["answer"].arrayValue
+//
+//                    for i in results {
+//                        print(i.stringValue)
+//                        self.addLocation(address: i.stringValue)
+//                    }
+//
+//                } else {
+//                    print(error)
+//                }
+//            }
+//
+//        }
     }
     
     func addLocation(address: String) {

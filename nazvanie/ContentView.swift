@@ -12,7 +12,7 @@ import MapKit
 struct ContentView: View {
     
     @State private var query = ""
-    
+
     @ObservedObject private var CSVobserver = CSVObserver()
     @ObservedObject private var mapObserver = MapObserver()
     
@@ -57,11 +57,14 @@ struct ContentView: View {
                             self.row = self.CSVobserver.getRandomRow()
                             self.mapObserver.put(data: self.row)
                             
-                            for i in self.mapObserver.models {
-                                let newLocation = MKPointAnnotation()
-                                newLocation.coordinate = CLLocationCoordinate2D(latitude: i.lat, longitude: i.lng)
-                                self.locations.append(newLocation)
-                            }
+                            Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (_) in
+                                for i in self.mapObserver.models {
+                                    let newLocation = MKPointAnnotation()
+                                    newLocation.coordinate = CLLocationCoordinate2D(latitude: i.lat, longitude: i.lng)
+                                    self.locations.append(newLocation)
+                                }
+                            })
+                            
                         }) {
                             Text("Get RANDOM from bad.csv")
                         }
