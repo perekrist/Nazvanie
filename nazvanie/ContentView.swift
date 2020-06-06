@@ -18,18 +18,29 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                HStack {
+                VStack {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search...", text: self.$query)
+                    }
                     
-                    Image(systemName: "magnifyingglass")
                     
-                    TextField("Search...", text: self.$query)
+                    Text("-- OR --")
                     
+                    Button(action: {
+                        
+                    }) {
+                        Text("Get RANDOM from bad.csv")
+                    }.padding()
+                        .foregroundColor(.blue)
                 }
                 .padding()
                 .foregroundColor(.gray)
                 .background(Color.white)
                 .cornerRadius(30)
                 .padding()
+                .shadow(radius: 30)
+                
                 
                 Spacer()
             }
