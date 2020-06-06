@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var query = ""
+    @ObservedObject private var CSVobserver = CSV()
+    @State private var row = ""
     
     var body: some View {
         ZStack {
@@ -28,11 +30,15 @@ struct ContentView: View {
                     Text("-- OR --")
                     
                     Button(action: {
-                        
+                        self.row = self.CSVobserver.getRandomRow()
                     }) {
                         Text("Get RANDOM from bad.csv")
-                    }.padding()
-                        .foregroundColor(.blue)
+                    }
+                    .padding()
+                    .foregroundColor(.blue)
+                    
+                    Text(row)
+                        .padding()
                 }
                 .padding()
                 .foregroundColor(.gray)
@@ -40,7 +46,6 @@ struct ContentView: View {
                 .cornerRadius(30)
                 .padding()
                 .shadow(radius: 30)
-                
                 
                 Spacer()
             }
