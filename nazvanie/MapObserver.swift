@@ -14,20 +14,20 @@ class MapObserver: ObservableObject {
     
     private let baseURL = ""
     
-    @Published var model: MapModel = MapModel(id: 0, error: "", adress: "", lat: 0, lng: 0)
+    @Published var model: MapModel = MapModel(error: "", adress: "", lat: 56.501041, lng: 84.992455)
     
     
     func put(data: String) {
         let url = baseURL + ""
-        AF.request(url, method: .put, parameters: ["data": data]).responseJSON { (data) in
-            let json = try! JSON(data: data.data!)
-            
-            let error = json["error"].stringValue
-            let answer = json["answer"].stringValue
-            
-            self.model = MapModel(id: 0, error: error, adress: answer, lat: 0, lng: 0)
-
-        }
+//        AF.request(url, method: .put, parameters: ["data": data]).responseJSON { (data) in
+//            let json = try! JSON(data: data.data!)
+//
+//            let error = json["error"].stringValue
+//            let answer = json["answer"].stringValue
+//
+//            self.model = MapModel(error: error, adress: answer, lat: 0, lng: 0)
+//
+//        }
     }
     
     

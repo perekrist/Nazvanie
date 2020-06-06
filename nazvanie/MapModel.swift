@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct MapModel: Identifiable {
-    var id: Int
+struct MapModel {
     var error: String
     var adress: String
     var lat: Double

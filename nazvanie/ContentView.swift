@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     
@@ -15,11 +16,13 @@ struct ContentView: View {
     @ObservedObject private var CSVobserver = CSVObserver()
     @ObservedObject private var mapObserver = MapObserver()
     
+    @State private var locations = [MKPointAnnotation]()
+    
     @State private var row = ""
     
     var body: some View {
         ZStack {
-            MapView()
+            MapView(annotations: locations)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
@@ -31,6 +34,11 @@ struct ContentView: View {
                         
                         Button(action: {
                             self.mapObserver.put(data: self.query)
+                            
+                            let newLocation = MKPointAnnotation()
+                            newLocation.coordinate = CLLocationCoordinate2D(latitude: self.mapObserver.model.lat, longitude: self.mapObserver.model.lng)
+                            self.locations.append(newLocation)
+                            
                         }) {
                             Text("Send")
                         }
@@ -42,13 +50,25 @@ struct ContentView: View {
                     
                     Text("-- OR --")
                     
-                    Button(action: {
-                        self.row = self.CSVobserver.getRandomRow()
-                    }) {
-                        Text("Get RANDOM from bad.csv")
+                    HStack {
+                        Button(action: {
+                            self.row = self.CSVobserver.getRandomRow()
+                        }) {
+                            Text("Get RANDOM from bad.csv")
+                        }
+                        .padding()
+                        .foregroundColor(.blue)
+                        
+                        if self.row != "" {
+                            Button(action: {
+                                self.row = ""
+                            }) {
+                                Image(systemName: "chevron.up")
+                            }
+                            .padding()
+                            .foregroundColor(.blue)
+                        }
                     }
-                    .padding()
-                    .foregroundColor(.blue)
                     
                     if row != "" {
                         Text(row)
