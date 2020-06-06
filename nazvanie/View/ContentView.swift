@@ -33,8 +33,6 @@ struct ContentView: View {
                         TextField("Search...", text: self.$query)
                         
                         Button(action: {
-                            self.mapObserver.put(data: self.query)
-                            
                             self.addAnnatations()
                             
                         }) {
@@ -49,7 +47,6 @@ struct ContentView: View {
                     HStack {
                         Button(action: {
                             self.row = self.CSVobserver.getRandomRow()
-                            self.mapObserver.put(data: self.row)
                             self.addAnnatations()
                         }) {
                             Text("Get RANDOM from bad.csv")
@@ -86,10 +83,16 @@ struct ContentView: View {
     }
     
     func addAnnatations() {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (_) in
+        self.mapObserver.put(data: self.row)
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (_) in
+            print(self.mapObserver.models)
+
             for i in self.mapObserver.models {
                 let newLocation = MKPointAnnotation()
-                newLocation.coordinate = CLLocationCoordinate2D(latitude: 50, longitude: 50)
+                let lat = Double(i.lat)
+                let lng = Double(i.lng)
+                newLocation.coordinate = CLLocationCoordinate2D(latitude: lat ?? 0, longitude: lng ?? 0)
                 newLocation.title = i.adress
                 self.locations.append(newLocation)
             }

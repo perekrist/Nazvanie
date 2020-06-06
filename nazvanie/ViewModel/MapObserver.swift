@@ -24,7 +24,6 @@ class MapObserver: ObservableObject {
         AF.request(baseURL, method: .post, parameters: ["data": data], encoding: JSONEncoding.default ).responseJSON { (data) in
                         
             let json = try? JSON(data: data.data!)
-            print(json)
             
             if json != nil {
                 let error = json!["error"].stringValue
@@ -32,9 +31,11 @@ class MapObserver: ObservableObject {
                 let results = json!["answer"].arrayValue
 
                 for result in results {
-                    self.models.append(MapModel(adress: result[1].stringValue, lat: result[2].stringValue, lng: result[3].stringValue))
+                    print(result)
+                    self.models.append(MapModel(adress: result[0].stringValue, lat: result[2].stringValue, lng: result[1].stringValue))
                 }
             }
+            print("load..")
         }
     }
 }
