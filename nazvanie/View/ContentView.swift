@@ -10,9 +10,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    
-    @State private var query = ""
-    
+        
     @ObservedObject private var CSVobserver = CSVObserver()
     @ObservedObject private var mapObserver = MapObserver()
     
@@ -30,11 +28,10 @@ struct ContentView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .padding()
-                        TextField("Search...", text: self.$query)
+                        TextField("Search...", text: self.$mapObserver.query)
                         
                         Button(action: {
                             self.addAnnatations()
-                            
                         }) {
                             Text("Send")
                         }
@@ -47,6 +44,7 @@ struct ContentView: View {
                     HStack {
                         Button(action: {
                             self.row = self.CSVobserver.getRandomRow()
+                            self.mapObserver.put(data: self.row)
                             self.addAnnatations()
                         }) {
                             Text("Get RANDOM from bad.csv")
@@ -83,11 +81,10 @@ struct ContentView: View {
     }
     
     func addAnnatations() {
-        self.mapObserver.put(data: self.row)
         
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (_) in
-            print(self.mapObserver.models)
-
+            self.locations.removeAll()
+            
             for i in self.mapObserver.models {
                 let newLocation = MKPointAnnotation()
                 let lat = Double(i.lat)
@@ -97,7 +94,6 @@ struct ContentView: View {
                 self.locations.append(newLocation)
             }
         })
-        self.query = ""
     }
 }
 
