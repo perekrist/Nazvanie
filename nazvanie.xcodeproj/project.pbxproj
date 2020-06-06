@@ -82,11 +82,9 @@
 		CAED2ABC248B553800024C9B /* nazvanie */ = {
 			isa = PBXGroup;
 			children = (
-				CAED2AC1248B553800024C9B /* ContentView.swift */,
-				CAED2ADA248B719700024C9B /* MapObserver.swift */,
-				CAED2AD1248B5AEA00024C9B /* MapView.swift */,
-				CAED2ADC248B761300024C9B /* MapModel.swift */,
-				CAED2AD8248B648500024C9B /* CSVObserver.swift */,
+				CAED2AE0248BAC0B00024C9B /* Model */,
+				CAED2ADF248BABFC00024C9B /* ViewModel */,
+				CAED2ADE248BABED00024C9B /* View */,
 				CAED2AD7248B63ED00024C9B /* DataSets */,
 				CAED2AC3248B553D00024C9B /* Assets.xcassets */,
 				CAED2ABF248B553800024C9B /* SceneDelegate.swift */,
@@ -112,6 +110,32 @@
 				CAED2AD3248B63E600024C9B /* new_bad.csv */,
 			);
 			path = DataSets;
+			sourceTree = "<group>";
+		};
+		CAED2ADE248BABED00024C9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CAED2AD1248B5AEA00024C9B /* MapView.swift */,
+				CAED2AC1248B553800024C9B /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CAED2ADF248BABFC00024C9B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CAED2ADA248B719700024C9B /* MapObserver.swift */,
+				CAED2AD8248B648500024C9B /* CSVObserver.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CAED2AE0248BAC0B00024C9B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAED2ADC248B761300024C9B /* MapModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F1A8AE765928F414014C95FC /* Frameworks */ = {

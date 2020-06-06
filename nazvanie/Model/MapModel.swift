@@ -10,6 +10,6 @@ import Foundation
 
 struct MapModel {
     var adress: String
-    var lat: Double
-    var lng: Double
+    var lat: String
+    var lng: String
 }

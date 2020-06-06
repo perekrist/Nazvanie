@@ -12,7 +12,7 @@ import MapKit
 struct ContentView: View {
     
     @State private var query = ""
-
+    
     @ObservedObject private var CSVobserver = CSVObserver()
     @ObservedObject private var mapObserver = MapObserver()
     
@@ -35,11 +35,7 @@ struct ContentView: View {
                         Button(action: {
                             self.mapObserver.put(data: self.query)
                             
-                            for i in self.mapObserver.models {
-                                let newLocation = MKPointAnnotation()
-                                newLocation.coordinate = CLLocationCoordinate2D(latitude: i.lat, longitude: i.lng)
-                                self.locations.append(newLocation)
-                            }
+                            self.addAnnatations()
                             
                         }) {
                             Text("Send")
@@ -48,23 +44,13 @@ struct ContentView: View {
                         .foregroundColor(.blue)
                     }
                     
-                    
-                    
                     Text("-- OR --")
                     
                     HStack {
                         Button(action: {
                             self.row = self.CSVobserver.getRandomRow()
                             self.mapObserver.put(data: self.row)
-                            
-                            Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (_) in
-                                for i in self.mapObserver.models {
-                                    let newLocation = MKPointAnnotation()
-                                    newLocation.coordinate = CLLocationCoordinate2D(latitude: i.lat, longitude: i.lng)
-                                    self.locations.append(newLocation)
-                                }
-                            })
-                            
+                            self.addAnnatations()
                         }) {
                             Text("Get RANDOM from bad.csv")
                         }
@@ -97,6 +83,18 @@ struct ContentView: View {
                 Spacer()
             }
         }
+    }
+    
+    func addAnnatations() {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (_) in
+            for i in self.mapObserver.models {
+                let newLocation = MKPointAnnotation()
+                newLocation.coordinate = CLLocationCoordinate2D(latitude: 50, longitude: 50)
+                newLocation.title = i.adress
+                self.locations.append(newLocation)
+            }
+        })
+        self.query = ""
     }
 }
 
