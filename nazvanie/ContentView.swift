@@ -35,9 +35,11 @@ struct ContentView: View {
                         Button(action: {
                             self.mapObserver.put(data: self.query)
                             
-                            let newLocation = MKPointAnnotation()
-                            newLocation.coordinate = CLLocationCoordinate2D(latitude: self.mapObserver.model.lat, longitude: self.mapObserver.model.lng)
-                            self.locations.append(newLocation)
+                            for i in self.mapObserver.models {
+                                let newLocation = MKPointAnnotation()
+                                newLocation.coordinate = CLLocationCoordinate2D(latitude: i.lat, longitude: i.lng)
+                                self.locations.append(newLocation)
+                            }
                             
                         }) {
                             Text("Send")
