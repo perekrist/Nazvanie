@@ -10,7 +10,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-        
+    
     @ObservedObject private var CSVobserver = CSVObserver()
     @ObservedObject private var mapObserver = MapObserver()
     
@@ -43,9 +43,11 @@ struct ContentView: View {
                     
                     HStack {
                         Button(action: {
-                            self.row = self.CSVobserver.getRandomRow()
-                            self.mapObserver.put(data: self.row)
-                            self.addAnnatations()
+                            withAnimation {
+                                self.row = self.CSVobserver.getRandomRow()
+                                self.mapObserver.put(data: self.row)
+                                self.addAnnatations()
+                            }
                         }) {
                             Text("Get RANDOM from bad.csv")
                         }
@@ -54,7 +56,9 @@ struct ContentView: View {
                         
                         if self.row != "" {
                             Button(action: {
-                                self.row = ""
+                                withAnimation {
+                                    self.row = ""
+                                }
                             }) {
                                 Image(systemName: "chevron.up")
                             }
@@ -70,7 +74,7 @@ struct ContentView: View {
                 }
                 .padding()
                 .foregroundColor(.gray)
-                .background(Color.white)
+                .background(Color.white.opacity(0.76))
                 .cornerRadius(30)
                 .padding()
                 .shadow(radius: 30)
