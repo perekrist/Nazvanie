@@ -1,0 +1,6 @@
+framework module Pods_nazvanie {
+  umbrella header "Pods-nazvanie-umbrella.h"
+
+  export *
+  module * { export * }
+}

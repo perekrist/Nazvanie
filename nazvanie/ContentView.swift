@@ -9,8 +9,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var query = ""
+    
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            MapView()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                HStack {
+                    
+                    Image(systemName: "magnifyingglass")
+                    
+                    TextField("Search...", text: self.$query)
+                    
+                }
+                .padding()
+                .foregroundColor(.gray)
+                .background(Color.white)
+                .cornerRadius(30)
+                .padding()
+                
+                Spacer()
+            }
+        }
     }
 }
 

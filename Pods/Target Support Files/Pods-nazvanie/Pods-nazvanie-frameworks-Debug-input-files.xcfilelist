@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-nazvanie/Pods-nazvanie-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/SwiftCSV/SwiftCSV.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
