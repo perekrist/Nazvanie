@@ -55,6 +55,7 @@ struct ContentView: View {
                     HStack {
                         Button(action: {
                             self.row = self.CSVobserver.getRandomRow()
+                            self.mapObserver.put(data: self.row)
                         }) {
                             Text("Get RANDOM from bad.csv")
                         }
