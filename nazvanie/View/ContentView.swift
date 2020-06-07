@@ -28,7 +28,12 @@ struct ContentView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .padding()
-                        TextField("Search...", text: self.$mapObserver.query)
+                        //TextField("Search...", text: self.$mapObserver.query)
+                        
+                        MultilineTextField("Type here", text: self.$mapObserver.query, onCommit: {
+                            
+                        })
+                            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray.opacity(0.5)))
                         
                         Button(action: {
                             self.addAnnatations()
